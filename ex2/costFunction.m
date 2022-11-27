@@ -20,13 +20,20 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+% 需要计算两个值，一个是J，一个是grad，分开计
 
+% H = g(z)
+%theta=theta[:,np.newaxis] %给列增加theta维度
+h=sigmoid(X*theta) %实现在sigmod.m
 
+% J 的表达式参考笔记
+J=(1/m)*((-y)'*log(h)-(1-y)'*log(1-h));
 
+% 梯度即为J的微分
+diff_hy=h-y;
+grad = (1/m)*(X'*diff_hy);
 
-
-
-
+%return J,grad
 % =============================================================
 
 end
